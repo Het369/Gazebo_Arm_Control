@@ -60,12 +60,32 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_link:
+        world:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        right_leg:
+        X5-9:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wrist:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -81,9 +101,17 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base_link:
+        world:
           Value: true
-        right_leg:
+        X5-9:
+          Value: true
+        base:
+          Value: true
+        link1:
+          Value: true
+        link2:
+          Value: true
+        wrist:
           Value: true
       Marker Scale: 0.5
       Name: TF
@@ -91,16 +119,20 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          right_leg:
-            {}
+        world:
+          X5-9:
+            base:
+              link1:
+                link2:
+                  wrist:
+                    {}
       Update Interval: 0
       Value: true
-  Enabled: true
+      Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
-    Frame Rate: 30
+    Fixed Frame: world
+    Frame Rate: 50
   Name: root
   Tools:
     - Class: rviz/Interact
@@ -154,4 +186,4 @@ Window Geometry:
     collapsed: false
   Width: 1216
   X: 17
-Y: 28
+  Y: 28

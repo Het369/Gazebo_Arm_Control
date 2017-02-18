@@ -111,7 +111,7 @@
 			<origin xyz="0 0 0"/>
 		</joint>
 
-		<joint name="X5-9_to_base" type="fixed">
+		<joint name="X5-9_to_base" type="revolute">
 			<origin rpy="0 0 0" xyz="0 0 0.031"/>
 			<axis xyz="0 0 1"/>
 			<parent link="X5-9"/>
@@ -120,7 +120,7 @@
 			<<dynamics damping="11.0" friction="0.0"/>
 		</joint>
 		
-		<joint name="base_to_link1" type="fixed">
+		<joint name="base_to_link1" type="revolute">
 			<origin rpy="0 0 0" xyz="0 -0.006 0.055"/>
 			<axis xyz="0 1 0"/>
 			<parent link="base"/>
@@ -129,7 +129,7 @@
 			<dynamics damping="11.0" friction="0.0"/>
 		</joint>
 
-		<joint name="link1_to_link2" type="fixed">
+		<joint name="link1_to_link2" type="revolute">
 			<origin rpy="0 0 0" xyz="0 0.031 0.280"/>
 			<axis xyz="0 1 0"/>
 			<parent link="link1"/>
@@ -137,7 +137,7 @@
 			<limit lower="-6.4" upper="6.6" effort="9.0" velocity="1.5"/>
 			<dynamics damping="10.0" friction="0.0"/>
 		</joint>
-		<joint name="link2_to_wrist" type="fixed">
+		<joint name="link2_to_wrist" type="revolute">
 			<origin rpy="0 0 0" xyz="0 -0.031 0.280"/>
 			<axis xyz="0 1 0"/>
 			<parent link="link2"/>
@@ -157,34 +157,34 @@
 		</actuator>
 	</transmission>
 
-	<transmission name="Joint1_Trans">
+	<transmission name="Joint2_Trans">
 		<joint name="base_to_link1">
 			<type>transmission_interface/SimpleTransmission</type>
 			<hardwareInterface>EffortJointInterface</hardwareInterface>
 		</joint>
-		<actuator name="Joint1_X5-9">
+		<actuator name="Joint2_X5-9">
 			<mechanicalReduction>1</mechanicalReduction>
 			<hardwareInterface>EffortJointInterface</hardwareInterface>
 		</actuator>
 	</transmission>
 
-	<transmission name="Joint1_Trans">
+	<transmission name="Joint3_Trans">
 		<joint name="link1_to_link2">
 			<type>transmission_interface/SimpleTransmission</type>
 			<hardwareInterface>EffortJointInterface</hardwareInterface>
 		</joint>
-		<actuator name="Joint1_X5-9">
+		<actuator name="Joint3_X5-9">
 			<mechanicalReduction>1</mechanicalReduction>
 			<hardwareInterface>EffortJointInterface</hardwareInterface>
 		</actuator>
 	</transmission>
 
-	<transmission name="Joint1_Trans">
+	<transmission name="Joint4_Trans">
 		<joint name="link2_to_wrist">
 			<type>transmission_interface/SimpleTransmission</type>
 			<hardwareInterface>EffortJointInterface</hardwareInterface>
 		</joint>
-		<actuator name="Joint1_X5-9">
+		<actuator name="Joint4_X5-9">
 			<mechanicalReduction>1</mechanicalReduction>
 			<hardwareInterface>EffortJointInterface</hardwareInterface>
 		</actuator>
