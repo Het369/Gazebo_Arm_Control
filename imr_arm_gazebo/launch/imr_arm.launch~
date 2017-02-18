@@ -1,0 +1,9 @@
+<launch>
+	<include file="$(find gazebo_ros)/launch/empty_world.launch"></include>
+		 <arg name="world_name" value="$(find imr_arm_gazebo)/worlds/imr_arm.world"/>
+		 <arg name="paused" default="true"/>
+		 
+
+		 <!-- Spawn a robot into Gazebo -->
+		 <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find imr_arm_description)/urdf/imr_arm.urdf -urdf -z 2 -model imr_arm" />
+</launch>

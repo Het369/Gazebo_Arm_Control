@@ -1,0 +1,25 @@
+<launch>
+	<!-- Load joint controller configurations from YAML file to parameter server -->
+	<rosparam file="$(find imr_arm_gazebo)/config/imr_arm_control.yaml" command="load"/>
+
+	<!-- load the controllers -->
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+		output="screen" ns="/imr_arm" args="joint1_position_controller joint2_position_controller
+		joint3_position_controller joint4_position_controller joint_state_controller"/>
+
+	<arg name="model" default="$(find imr_arm_description)/urdf/imr_arm.urdf"/>
+	<!-- <arg name="gui" default="true" />
+	<arg name="rvizconfig" default="$(find imr_arm_description)/rviz/imr_arm.rviz" /> -->
+
+	<param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+	<param name="use_gui" value="$(arg gui)"/>
+
+	<!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
+	<!-- convert joint states to TF transforms for rviz, etc -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+		respawn="false" output="screen">
+		<remap from="/joint_states" to="/imr_arm/joint_states" />
+	</node>
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+</launch>
