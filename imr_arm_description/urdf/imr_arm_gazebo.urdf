@@ -1,12 +1,12 @@
 
 <gazebo>
   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    <robotNamespace>/IMR_ARM</robotNamespace>
+    <robotNamespace>/imr_arm</robotNamespace>
   </plugin>
 </gazebo>
 <?xml version="1.0"?>
 	<robot name="imr_arm">
-		<link name="base_link"/>
+		<link name="world"/>
 		<link name="X5-9">
 			<inertial>
 				<origin rpy="0 0 0" xyz="0 0 0" />
@@ -106,7 +106,7 @@
 
 		
 		<joint name="world_to_X5-9" type="fixed">
-			<parent link="base_link"/>
+			<parent link="world"/>
 			<child link="X5-9"/>
 			<origin xyz="0 0 0"/>
 		</joint>
@@ -146,61 +146,63 @@
 			<dynamics damping="9.0" friction="0.0"/>
 		</joint>
 	
-	<transmission name="Joint1_Trans">
-		<joint name="X5-9_to_base">
-			<type>transmission_interface/SimpleTransmission</type>
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
-		</joint>
-		<actuator name="Joint1_X5-9">
-			<mechanicalReduction>1</mechanicalReduction>
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
-		</actuator>
-	</transmission>
+		<transmission name="Joint1_Trans">
+			<joint name="X5-9_to_base">
+				<type>transmission_interface/SimpleTransmission</type>
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="Joint1_X5-9">
+				<mechanicalReduction>1</mechanicalReduction>
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</actuator>
+		</transmission>
 
-	<transmission name="Joint2_Trans">
-		<joint name="base_to_link1">
-			<type>transmission_interface/SimpleTransmission</type>
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
-		</joint>
-		<actuator name="Joint2_X5-9">
-			<mechanicalReduction>1</mechanicalReduction>
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
-		</actuator>
-	</transmission>
+		<transmission name="Joint2_Trans">
+			<joint name="base_to_link1">
+				<type>transmission_interface/SimpleTransmission</type>
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="Joint2_X5-9">
+				<mechanicalReduction>1</mechanicalReduction>
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</actuator>
+		</transmission>
 
-	<transmission name="Joint3_Trans">
-		<joint name="link1_to_link2">
-			<type>transmission_interface/SimpleTransmission</type>
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
-		</joint>
-		<actuator name="Joint3_X5-9">
-			<mechanicalReduction>1</mechanicalReduction>
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
-		</actuator>
-	</transmission>
+		<transmission name="Joint3_Trans">
+			<joint name="link1_to_link2">
+				<type>transmission_interface/SimpleTransmission</type>
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="Joint3_X5-9">
+				<mechanicalReduction>1</mechanicalReduction>
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</actuator>
+		</transmission>
 
-	<transmission name="Joint4_Trans">
-		<joint name="link2_to_wrist">
-			<type>transmission_interface/SimpleTransmission</type>
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
-		</joint>
-		<actuator name="Joint4_X5-9">
-			<mechanicalReduction>1</mechanicalReduction>
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
-		</actuator>
-	</transmission>
+		<transmission name="Joint4_Trans">
+			<joint name="link2_to_wrist">
+				<type>transmission_interface/SimpleTransmission</type>
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="Joint4_X5-9">
+				<mechanicalReduction>1</mechanicalReduction>
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</actuator>
+		</transmission>
 
-	</gazebo><gazebo reference="X5-9">
-		<material>Gazebo/Grey</material>
-	</gazebo>
-	<gazebo reference="base">
-		<material>Gazebo/Grey</material>
-	</gazebo>
-	<gazebo reference="link1">
-		<material>Gazebo/Grey</material>
-	</gazebo>
-	<gazebo reference="link2">
-		<material>Gazebo/Grey</material>
-	</gazebo><gazebo reference="wrist">
-		<material>Gazebo/Grey</material>
+		<gazebo reference="X5-9">
+			<material>Gazebo/Grey</material>
+		</gazebo>
+		<gazebo reference="base">
+			<material>Gazebo/Grey</material>
+		</gazebo>
+		<gazebo reference="link1">
+			<material>Gazebo/Grey</material>
+		</gazebo>
+		<gazebo reference="link2">
+			<material>Gazebo/Grey</material>
+		</gazebo>
+		<gazebo reference="wrist">
+			<material>Gazebo/Grey</material>
+		</gazebo>
 	</robot>
