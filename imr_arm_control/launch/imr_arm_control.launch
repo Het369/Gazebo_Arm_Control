@@ -3,6 +3,7 @@
 	<rosparam file="$(find imr_arm_control)/config/imr_arm_control.yaml" command="load"/>
 
 	<!-- load the controllers -->
+	<!-- Controller should be in the same namespase (ns) as the gazebo plugin in the model -->
 	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
 		output="screen" ns="/imr_arm" args="joint1_position_controller joint2_position_controller
 		joint3_position_controller joint4_position_controller joint_state_controller"/>

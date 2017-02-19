@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 	<robot name="imr_arm">
+		<!-- The gazebo plugin must stay inside of the robot model-->
 		<gazebo>
 	    	<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
 	      		<robotNamespace>/imr_arm</robotNamespace>
@@ -148,6 +149,7 @@
 		<transmission name="Joint1_Trans">
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="Joint1">
+				<!-- EfforJointInterface must reside both in joint and in actuator-->
 				<hardwareInterface>EffortJointInterface</hardwareInterface>
 			</joint>
 			<actuator name="Joint1_X5-9">
@@ -159,6 +161,7 @@
 		<transmission name="Joint2_Trans">
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="Joint2">
+				<!-- EfforJointInterface must reside both in joint and in actuator-->
 				<hardwareInterface>EffortJointInterface</hardwareInterface>
 			</joint>
 			<actuator name="Joint2_X5-9">
@@ -168,6 +171,7 @@
 		</transmission>
 
 		<transmission name="Joint3_Trans">
+			<!-- EfforJointInterface must reside both in joint and in actuator-->
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="Joint3">
 				<hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -181,6 +185,7 @@
 		<transmission name="Joint4_Trans">
 			<type>transmission_interface/SimpleTransmission</type>
 			<joint name="Joint4">
+				<!-- EfforJointInterface must reside both in joint and in actuator-->
 				<hardwareInterface>EffortJointInterface</hardwareInterface>
 			</joint>
 			<actuator name="Joint4_X5-4">
