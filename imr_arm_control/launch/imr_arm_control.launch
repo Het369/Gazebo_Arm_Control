@@ -1,6 +1,6 @@
 <launch>
 	<!-- Load joint controller configurations from YAML file to parameter server -->
-	<rosparam file="$(find imr_arm_gazebo)/config/imr_arm_control.yaml" command="load"/>
+	<rosparam file="$(find imr_arm_control)/config/imr_arm_control.yaml" command="load"/>
 
 	<!-- load the controllers -->
 	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"

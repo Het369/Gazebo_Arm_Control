@@ -6,14 +6,15 @@ project(imr_arm_gazebo)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
 	roslaunch
-	#ros_control
-	#ros_controllers
 )
 catkin_package()
 roslaunch_add_file_check(launch)
 
 install(DIRECTORY launch rviz urdf
 	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
+install(DIRECTORY worlds
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -107,7 +108,7 @@ install(DIRECTORY launch rviz urdf
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES imr_arm_gazebo
-#  CATKIN_DEPENDS ros_control ros_controllers
+#  CATKIN_DEPENDS
 #  DEPENDS system_lib
 )
 

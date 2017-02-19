@@ -33,7 +33,7 @@
         args="-urdf -model imr_arm -param robot_description"/>
     
     <!-- ros_control rrbot launch file -->
-    <include file="$(find imr_arm_gazebo)/launch/imr_arm_control.launch" />
+    <include file="$(find imr_arm_control)/launch/imr_arm_control.launch" />
 
 
 

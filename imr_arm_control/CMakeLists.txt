@@ -1,23 +1,35 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(imr_arm_description)
+project(imr_arm_control)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
 	roslaunch
+
+	#ros_control subpackages
+	controller_interface
+	controller_manager
+	controller_manager_msgs
+	controller_manager_tests
+	hardware_interface
+	joint_limits_interface
+	realtime_tools
+	transmission_interface
+
+	#ros_controller subpackages
+	diff_drive_controller
+	joint_trajectory_controller
+	effort_controllers
+	position_controllers
+	force_torque_sensor_controller
+	forward_command_controller
+	gripper_action_controller
+	rqt_joint_trajectory_controller
+	imu_sensor_controller
+	velocity_controllers
+	joint_state_controller
 )
-
-roslaunch_add_file_check(launch)
-
-install(DIRECTORY launch/ rviz urdf
-		DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch)
-
-install(DIRECTORY meshes/
-  		DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/meshes)
-
-install(DIRECTORY urdf/
-  		DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -110,7 +122,7 @@ install(DIRECTORY urdf/
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES imr_arm_description
+#  LIBRARIES imr_arm_control
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
@@ -124,24 +136,24 @@ catkin_package(
 # include_directories(include)
 
 ## Declare a C++ library
-# add_library(imr_arm_description
-#   src/${PROJECT_NAME}/imr_arm_description.cpp
+# add_library(imr_arm_control
+#   src/${PROJECT_NAME}/imr_arm_control.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(imr_arm_description ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(imr_arm_control ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(imr_arm_description_node src/imr_arm_description_node.cpp)
+# add_executable(imr_arm_control_node src/imr_arm_control_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(imr_arm_description_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(imr_arm_control_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(imr_arm_description_node
+# target_link_libraries(imr_arm_control_node
 #   ${catkin_LIBRARIES}
 # )
 
@@ -160,7 +172,7 @@ catkin_package(
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS imr_arm_description imr_arm_description_node
+# install(TARGETS imr_arm_control imr_arm_control_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -185,7 +197,7 @@ catkin_package(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_imr_arm_description.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_imr_arm_control.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
