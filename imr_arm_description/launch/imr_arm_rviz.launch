@@ -1,11 +1,12 @@
 <launch>
 
   <arg name="model" default="$(find imr_arm_description)/urdf/imr_arm_rviz.urdf"/>
-  <arg name="rvizconfig" default="$(find imr_arm_description)/rviz/imr_arm.rviz" />
+  <arg name="rvizconfig" default="$(find imr_arm_description)/rviz/imr_arm_rviz.rviz" />
   <arg name="gui" default="False" />
 
   <param name="robot_description" textfile="$(find imr_arm_description)/urdf/imr_arm_rviz.urdf" />
   <param name="use_gui" value="$(arg gui)" />
+  <param name="use_sim_time" type="bool" value="false"/>
  
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
      <rosparam param="source_list">["/jointState_fbk"]</rosparam>
