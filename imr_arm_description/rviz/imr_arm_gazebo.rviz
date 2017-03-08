@@ -90,6 +90,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        EE:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -113,6 +118,8 @@ Visualization Manager:
           Value: true
         wrist:
           Value: true
+        EE:
+          Value: true
       Marker Scale: 0.5
       Name: TF
       Show Arrows: true
@@ -125,7 +132,8 @@ Visualization Manager:
               link1:
                 link2:
                   wrist:
-                    {}
+                    EE:
+                      {}
       Update Interval: 0
       Value: true
       Enabled: true

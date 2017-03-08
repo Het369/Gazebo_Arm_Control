@@ -2,7 +2,7 @@
 
   <arg name="model" default="$(find imr_arm_description)/urdf/imr_arm_rviz.urdf"/>
   <arg name="rvizconfig" default="$(find imr_arm_description)/rviz/imr_arm_rviz.rviz" />
-  <arg name="gui" default="False" />
+  <arg name="gui" default="True" />
 
   <param name="robot_description" textfile="$(find imr_arm_description)/urdf/imr_arm_rviz.urdf" />
   <param name="use_gui" value="$(arg gui)" />

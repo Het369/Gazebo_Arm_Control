@@ -26,6 +26,7 @@
 				</geometry>
 			</collision> -->
 		</link>
+
 		<link name="base">
 			<inertial>
 				<origin rpy="0 0 0" xyz="-0.005 0.016 0.044" />
@@ -83,7 +84,7 @@
 				</geometry>
 			</collision>-->
 		</link>
-		 <link name="wrist">
+		<link name="wrist">
 			<inertial>
 				<origin rpy="0 0 0" xyz="0.010 -0.035 0.050" />
 				<mass value="0.4014" />
@@ -102,6 +103,13 @@
 				</geometry>
 			</collision>-->
 		</link>
+		<link name="EE">
+	        <inertial>
+	            <origin rpy="0 0 0" xyz="0.010 -0.035 0.050" />
+				<mass value="0.4014" />
+				<inertia ixx="0.000311" ixy="-0.000138" ixz="0.000028" iyy="-0.000383" iyz="-0.000063" izz="0.000941"/>
+	        </inertial>
+    	</link>
 
 		
 		<joint name="world_to_X5-9" type="fixed">
@@ -115,35 +123,43 @@
 			<axis xyz="0 0 1"/>
 			<parent link="X5-9"/>
 			<child link="base"/>
-			<limit lower="-2.6" upper="2.6" effort="9.0" velocity="1.5"/>
-			<<dynamics damping="10" friction="0.0"/>
+			<limit lower="-3." upper="3." effort="9.0" velocity="1.5"/>
+			<dynamics damping="10" friction="0.0"/>
 		</joint>
 		
 		<joint name="Joint2" type="revolute">
 			<origin rpy="0 0 0" xyz="0 -0.006 0.055"/>
-			<axis xyz="0 1 0"/>
+			<axis xyz="0 -1 0"/>
 			<parent link="base"/>
 			<child link="link1"/>
-			<limit lower="-3.14" upper="3.14" effort="9.0" velocity="1.5"/>
+			<limit lower="-3." upper="3." effort="13.0" velocity="1.5"/>
 			<dynamics damping="10" friction="0.0"/>
 		</joint>
 
-		<joint name="Joint3" type="continuous">
+		<joint name="Joint3" type="revolute">
 			<origin rpy="0 0 0" xyz="0 0.031 0.280"/>
 			<axis xyz="0 1 0"/>
 			<parent link="link1"/>
 			<child link="link2"/>
-			<limit lower="-3.14" upper="3.14" effort="9.0" velocity="1.5"/>
+			<limit lower="-3." upper="3." effort="13.0" velocity="1.5"/>
 			<dynamics damping="10" friction="0.0"/>
 		</joint>
 		<joint name="Joint4" type="revolute">
 			<origin rpy="0 0 0" xyz="0 -0.031 0.280"/>
-			<axis xyz="0 1 0"/>
+			<axis xyz="0 -1 0"/>
 			<parent link="link2"/>
 			<child link="wrist"/>
-			<limit lower="-3.14" upper="3.14" effort="4.0" velocity="3.4"/>
+			<limit lower="-3." upper="3." effort="7.0" velocity="3.4"/>
 			<dynamics damping="10" friction="0.0"/>
 		</joint>
+ 		<joint name="Joint5" type="revolute">
+        	<origin rpy="0 0 0"  xyz="0 -0.04 0.07"/>
+        	<axis xyz="0 1 0"/> <!-- THIS SHOULD BE "0 0 1" BUT IT BREAKS EVERYTHING AND NO IDEA WHY!-->
+        	<parent link="wrist"/>
+        	<child link="EE"/>
+        	<limit effort="2.5" velocity="9.6"/>
+        	<dynamics damping="9.0" friction="0.0"/>
+    	</joint>
 	
 		<transmission name="Joint1_Trans">
 			<type>transmission_interface/SimpleTransmission</type>
@@ -193,6 +209,18 @@
 			</actuator>
 		</transmission>
 
+		<transmission name="Joint5_Trans">
+			<type>transmission_interface/SimpleTransmission</type>
+			<joint name="Joint5">
+				<!-- EfforJointInterface must reside both in joint and in actuator-->
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</joint>
+			<actuator name="Joint5_X5-1">
+				<mechanicalReduction>1</mechanicalReduction>
+				<hardwareInterface>EffortJointInterface</hardwareInterface>
+			</actuator>
+		</transmission>
+
 		<gazebo reference="X5-9">
 			<material>Gazebo/Grey</material>
 		</gazebo>
@@ -206,6 +234,9 @@
 			<material>Gazebo/Grey</material>
 		</gazebo>
 		<gazebo reference="wrist">
+			<material>Gazebo/Grey</material>
+		</gazebo>
+		<gazebo reference="EE">
 			<material>Gazebo/Grey</material>
 		</gazebo>
 	</robot>
