@@ -1,0 +1,20 @@
+imr_arm:
+    joint_state_controller:
+        type: joint_state_controller/JointStateController
+        publish_rate: 1000
+
+    joint1_effort_controller:
+        type: forward_command_controller/ForwardCommandController
+        joint: Joint1       #Must have the same name as the associated joint in your urdf file
+    joint2_effort_controller:
+        type: forward_command_controller/ForwardCommandController
+        joint: Joint2       #Must have the same name as the associated joint in your urdf file
+    joint3_effort_controller:
+        type: forward_command_controller/ForwardCommandController
+        joint: Joint3       #Must have the same name as the associated joint in your urdf file
+    joint4_effort_controller:
+        type: forward_command_controller/ForwardCommandController
+        joint: Joint4       #Must have the same name as the associated joint in your urdf file
+    joint5_effort_controller:
+        type: forward_command_controller/ForwardCommandController
+        joint: Joint5       #Must have the same name as the associated joint in your urdf file

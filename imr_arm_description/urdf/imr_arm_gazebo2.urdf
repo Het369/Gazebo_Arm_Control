@@ -3,7 +3,7 @@
 		<!-- The gazebo plugin must stay inside of the robot model-->
 		<gazebo>
 	    	<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-	      		<robotNamespace>/imr_arm1</robotNamespace>
+	      		<robotNamespace>/imr_arm2</robotNamespace>
 	    	</plugin>
   		</gazebo>
 		<link name="world"/>

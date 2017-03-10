@@ -1,0 +1,12 @@
+ <launch>
+ 	<arg name="robot_name"/>
+    <arg name="init_pose"/>
+
+	 <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+      <node name="imr_arm2_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+          args="$(arg init_pose) -urdf -model $(arg robot_name) -param /robot_description2"/>
+      
+      <!-- ros_control IMR launch file -->
+      <include file="$(find imr_arm_control)/launch/imr_arm_control2.launch" />
+
+</launch>

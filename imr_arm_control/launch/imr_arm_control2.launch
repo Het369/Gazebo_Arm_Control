@@ -1,17 +1,17 @@
 <launch>
 	<!-- Load joint controller configurations from YAML file to parameter server -->
-	<rosparam file="$(find imr_arm_control)/config/imr_arm_position_control.yaml" command="load"/>
+	<rosparam file="$(find imr_arm_control)/config/imr_arm_position_control2.yaml" command="load"/>
 
 	<!-- load the controllers -->
 	<!-- Controller should be in the same namespase (ns) as the gazebo plugin in the model -->
 	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-		output="screen" ns="/imr_arm1" args="joint1_position_controller joint2_position_controller
+		output="screen" ns="/imr_arm2" args="joint1_position_controller joint2_position_controller
 		joint3_position_controller joint4_position_controller joint5_position_controller joint_state_controller"/>
 
 	<!-- convert joint states to TF transforms for rviz, etc -->
-	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	<node name="robot_state_publisher2" pkg="robot_state_publisher" type="robot_state_publisher"
 		respawn="false" output="screen">
-		<remap from="/joint_states" to="/imr_arm1/joint_states" />
+		<remap from="/joint_states" to="/imr_arm2/joint_states" />
 	</node>
 
 </launch>
