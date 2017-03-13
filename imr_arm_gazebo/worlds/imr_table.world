@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name="table">
+      <static>true</static>
+      <link name="table_top">
+        <collision name="table">
+          <pose>0 0 0.0035  0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.45 0.711 0.00675</size>
+            </box>
+          </geometry>
+        </collision>
+        <collision name="side1">
+          <pose>0.2325 0.06 0.035  0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.525 0.07</size>
+            </box>
+          </geometry>
+        </collision>
+        <collision name="side2">
+          <pose>-0.2325 -0.06 0.035  0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.525 0.07</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://../meshes/TableTop.dae</uri></mesh>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0.2 0.2 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="tray">
+      <link name="tray">
+        <pose>0 0 10  0 0 1.57</pose>
+        <inertial>
+          <pose>-0 0 0.0037  0 0 0</pose>
+          <mass>0.26</mass>
+          <inertia>
+            <ixx>0.0038</ixx>
+            <ixy>0.0</ixy>
+            <ixz>0.0</ixz>
+            <iyy>0.0021</iyy>
+            <iyz>0.0</iyz>
+            <izz>0.0059</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://../meshes/Tray_V2.dae</uri></mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://../meshes/Tray_V2.dae</uri></mesh>
+          </geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>
+
+
