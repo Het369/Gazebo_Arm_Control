@@ -7,6 +7,7 @@
     <include>
       <uri>model://sun</uri>
     </include>
+
     <model name="table">
       <static>true</static>
       <link name="table_top">
@@ -36,7 +37,7 @@
         </collision>
         <visual name="visual">
           <geometry>
-            <mesh><uri>file://../meshes/TableTop.dae</uri></mesh>
+            <mesh><uri>model://TableTop.dae</uri></mesh>
           </geometry>
           <material>
             <ambient>0 0 0 1</ambient>
@@ -47,6 +48,7 @@
         </visual>
       </link>
     </model>
+
     <model name="tray">
       <link name="tray">
         <pose>0 0 10  0 0 1.57</pose>
@@ -64,12 +66,12 @@
         </inertial>
         <collision name="collision">
           <geometry>
-            <mesh><uri>file://../meshes/Tray_V2.dae</uri></mesh>
+            <mesh><uri>model://Tray_V2.dae</uri></mesh>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <mesh><uri>file://../meshes/Tray_V2.dae</uri></mesh>
+            <mesh><uri>model://Tray_V2.dae</uri></mesh>
           </geometry>
           <material>
             <ambient>0 0 1 1</ambient>
@@ -80,7 +82,6 @@
         </visual>
       </link>
     </model>
+
   </world>
 </sdf>
-
-

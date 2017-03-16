@@ -96,12 +96,12 @@
 					 <mesh filename="package://imr_arm_description/meshes/wrist_assembly.dae"/>
 				</geometry>
 			</visual>
-		 <!-- <collision>
+		 	<!-- <collision>
 				<origin rpy="0 0 0" xyz="0 0 0" />
 				<geometry>
-					<box size="0.1 0.1 0.001"/>
+					<box size="0.1 0.1 0.1"/>
 				</geometry>
-			</collision>-->
+			</collision> -->
 		</link>
 		<link name="EE">
 	        <inertial>
@@ -109,6 +109,18 @@
 				<mass value="0.4014" />
 				<inertia ixx="0.000311" ixy="-0.000138" ixz="0.000028" iyy="-0.000383" iyz="-0.000063" izz="0.000941"/>
 	        </inertial>
+	        <visual>
+				<origin rpy="0 0 0" xyz="0 0 0" />
+				<geometry>
+					 <mesh filename="package://imr_arm_description/meshes/EndEffector.dae"/>
+				</geometry>
+			</visual>
+	        <collision>
+				<origin rpy="0 0 0" xyz="0 0 0" />
+				<geometry>
+					 <mesh filename="package://imr_arm_description/meshes/EndEffector_Contact.dae"/>
+				</geometry>
+			</collision>
     	</link>
 
 		
@@ -124,7 +136,7 @@
 			<parent link="X5-9"/>
 			<child link="base"/>
 			<limit lower="-3." upper="3." effort="9.0" velocity="1.5"/>
-			<dynamics damping="10" friction="0.0"/>
+			<dynamics damping="10" friction="0.5"/>
 		</joint>
 		
 		<joint name="Joint2" type="revolute">
@@ -133,7 +145,7 @@
 			<parent link="base"/>
 			<child link="link1"/>
 			<limit lower="-3." upper="3." effort="13.0" velocity="1.5"/>
-			<dynamics damping="10" friction="0.0"/>
+			<dynamics damping="10" friction="0.5"/>
 		</joint>
 
 		<joint name="Joint3" type="revolute">
@@ -142,7 +154,7 @@
 			<parent link="link1"/>
 			<child link="link2"/>
 			<limit lower="-3." upper="3." effort="13.0" velocity="1.5"/>
-			<dynamics damping="10" friction="0.0"/>
+			<dynamics damping="10" friction="0.5"/>
 		</joint>
 		<joint name="Joint4" type="revolute">
 			<origin rpy="0 0 0" xyz="0 -0.031 0.280"/>
@@ -153,12 +165,12 @@
 			<dynamics damping="10" friction="0.0"/>
 		</joint>
  		<joint name="Joint5" type="revolute">
-        	<origin rpy="0 0 0"  xyz="0 -0.04 0.07"/>
+        	<origin rpy="0 0 0"  xyz="0 -0.04 0.0745"/>
         	<axis xyz="0 1 0"/> <!-- THIS SHOULD BE "0 0 1" BUT IT BREAKS EVERYTHING AND NO IDEA WHY!-->
         	<parent link="wrist"/>
         	<child link="EE"/>
         	<limit lower="-3." upper="3." effort="2.5" velocity="9.6"/>
-        	<dynamics damping="9.0" friction="0.0"/>
+        	<dynamics damping="9.0" friction="0.5"/>
     	</joint>
 	
 		<transmission name="Joint1_Trans">
