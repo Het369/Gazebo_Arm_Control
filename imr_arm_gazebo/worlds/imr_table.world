@@ -51,7 +51,7 @@
 
     <model name="tray">
       <link name="tray">
-        <pose>0 0 10  0 0 1.57</pose>
+        <pose>0 0 0.1  0 0 1.57</pose>
         <inertial>
           <pose>-0 0 0.0037  0 0 0</pose>
           <mass>0.26</mass>

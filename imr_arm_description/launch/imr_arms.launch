@@ -11,14 +11,14 @@
       
     <!-- <group ns="imr_arm1"> -->
       <include file="$(find imr_arm_description)/launch/imr_arm.launch" >
-        <arg name="init_pose" value="-x 0.3 -y -0.3 -z 0 -Y -1.57" />
+        <arg name="init_pose" value="-x 0.28 -y -0.28 -z 0 -Y 1.57" />
         <arg name="robot_name"  value="imr_arm1" />
       </include>
     <!-- </group> -->
 
     <!-- <group ns="imr_arm2">-->
       <include file="$(find imr_arm_description)/launch/imr_arm2.launch" >
-        <arg name="init_pose" value="-x -0.3 -y 0.3 -z 0 -Y 1.57" />
+        <arg name="init_pose" value="-x -0.28 -y 0.28 -z 0 -Y -1.57" />
         <arg name="robot_name"  value="imr_arm2" />
       </include>
      <!--</group> -->

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+	<robot name="imr_arm">
+		<!-- The gazebo plugin must stay inside of the robot model-->
+		<link name="world"/>
+		<link name="TableTop">
+			<visual>
+				<origin rpy="0 0 0" xyz="0 0 0" />
+				<geometry>
+					 <mesh filename="package://imr_arm_description/meshes/TableTop.dae"/>
+				</geometry>
+			</visual>
+<!-- 			<collision>
+				<origin rpy="0 0 0" xyz="0 0 0" />
+				<geometry>
+					<box size="0.1 0.1 0.001"/>
+				</geometry>
+			</collision> -->
+		</link>
+
+		<joint name="world_to_X5-9" type="fixed">
+			<parent link="world"/>
+			<child link="TableTop"/>
+			<origin xyz="0 0 0"/>
+		</joint>
+
+		<gazebo reference="TableTop">
+			<material>Gazebo/Black</material>
+		</gazebo>
+	</robot>
